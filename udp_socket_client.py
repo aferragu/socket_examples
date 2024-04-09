@@ -10,12 +10,13 @@ if (len(sys.argv) != 3):
 
 #Envolvemos el loop en un try para capturar el Ctrl+C de corte
 print("Iniciando cliente, presione Ctrl+C para salir...")
+# Creo el socket
+serverHost, serverPort = sys.argv[1:]
+clientSocket = socket(AF_INET, SOCK_DGRAM)
+clientSocket.settimeout(3) #timeout en segundos para el read.
+
 try:
     while True:
-        # Creo el socket
-        serverHost, serverPort = sys.argv[1:]
-        clientSocket = socket(AF_INET, SOCK_DGRAM)
-        clientSocket.settimeout(3) #timeout en segundos para el read.
 
         #Pedimos un mensaje al usuario.
         message = input("Mensaje: ")
