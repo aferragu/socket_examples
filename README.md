@@ -19,6 +19,11 @@ Modo de uso:
 
 y análogo para los TCP.
 
+Si lo quieren probar local necesitan un intérprete Python 3 y pueden hacer lo siguiente:
+
+ * En una consola llaman al servidor con `python udp_socket_server.py 5000`
+ * En otra consola llaman al cliente con `python udp_socket_client.py localhost 5000`
+   La dirección `localhost` es una dirección particular que hace referencia a la propia máquina.
 ------
 
 Creado por Andrés Ferragut
