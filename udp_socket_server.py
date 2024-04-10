@@ -27,14 +27,15 @@ try:
 		#decodificamos los bytes a string
 		decoded = message.decode()
 		#Logging a pantalla
-		print("["+datetime.now().strftime("%H:%M:%S")+"] - Received '"+decoded+"' from: "+str(address[0])+":"+str(address[1]))
+		print("["+datetime.now().strftime("%H:%M:%S")+"] - Recibi '"+decoded+"' desde: "+str(address[0])+":"+str(address[1]))
 		# Pasamos el mensaje a mayúscula
 		outgoing = decoded.upper()
 		# Volvemos a enviarlo hacia la misma dirección y puerto del que vino.
 		serverSocket.sendto(outgoing.encode(), address)
 
 except KeyboardInterrupt:
-	print("Closing socket...")
+	print("")
+	print("Cerrando el socket...")
 	serverSocket.close()
-	print("Exiting...")
+	print("Saliendo...")
 	sys.exit()

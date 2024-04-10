@@ -26,7 +26,7 @@ try:
     while True:
         #Esperamos una conexión
         connection,address = serverSocket.accept()
-        print("Incoming connection from: "+str(address[0])+":"+str(address[1]))
+        print("Conexión entrante desde: "+str(address[0])+":"+str(address[1]))
         #una vez conectado, iniciamos recepción y transmisión de datos
         while True:
             # Leemos el mensaje recibido y la dirección de donde viene
@@ -40,14 +40,15 @@ try:
 		    #decodificamos los bytes a string
             decoded = message.decode()
             #Logging a pantalla
-            print("["+datetime.now().strftime("%H:%M:%S")+"] - Received: "+decoded)
+            print("["+datetime.now().strftime("%H:%M:%S")+"] - Recibi: "+decoded)
             # Pasamos el mensaje a mayúscula
             outgoing = decoded.upper()
             # Volvemos a enviarlo hacia la misma dirección y puerto del que vino.
             connection.sendall(outgoing.encode())
 		
 except KeyboardInterrupt:
-	print("Closing socket...")
-	serverSocket.close()
-	print("Exiting...")
-	sys.exit()
+    print("")
+    print("Cerrando el socket...")
+    serverSocket.close()
+    print("Saliendo...")
+    sys.exit()

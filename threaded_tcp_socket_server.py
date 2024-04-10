@@ -29,7 +29,7 @@ def handle_client(connection,address):
         #decodificamos los bytes a string
         decoded = message.decode()
         #Logging a pantalla
-        print("["+datetime.now().strftime("%H:%M:%S")+"] - Received: "+decoded)
+        print("["+datetime.now().strftime("%H:%M:%S")+"] - Recibi: "+decoded)
         # Pasamos el mensaje a mayúscula
         outgoing = decoded.upper()
         # Volvemos a enviarlo hacia la misma dirección y puerto del que vino.
@@ -50,15 +50,15 @@ try:
     while True:
         #Esperamos una conexión
         connection,address = serverSocket.accept()
-        print("Incoming connection from: "+str(address[0])+":"+str(address[1]))
+        print("Conexión entrante desde: "+str(address[0])+":"+str(address[1]))
         #una vez conectado, iniciamos una nueva thread para manejar esa conexión
         thread = threading.Thread(target=handle_client, args=(connection, address))
         thread.start()
         
 except KeyboardInterrupt:
-	print("Closing socket...")
+	print("Cerrando socket...")
 	serverSocket.close()
-	print("Exiting...")
+	print("Saliendo...")
 	sys.exit()        
 
 
